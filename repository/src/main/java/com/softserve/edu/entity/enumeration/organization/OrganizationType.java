@@ -4,25 +4,25 @@ import com.softserve.edu.entity.enumeration.user.UserRole;
 
 public enum OrganizationType {
     PROVIDER(){
-        public UserRole getOrganizationAdminRole(OrganizationType type){
+        public UserRole getOrganizationAdminRole(){
             return UserRole.PROVIDER_ADMIN;
         }
     },
     CALIBRATOR() {
-        public UserRole getOrganizationAdminRole(OrganizationType type) {
+        public UserRole getOrganizationAdminRole() {
             return UserRole.CALIBRATOR_ADMIN;
         }
     },
     STATE_VERIFICATOR() {
-        public UserRole getOrganizationAdminRole(OrganizationType type) {
+        public UserRole getOrganizationAdminRole() {
             return UserRole.STATE_VERIFICATOR_ADMIN;
         }
     },
     NO_TYPE() {
-            public UserRole getOrganizationAdminRole (OrganizationType type){
-                throw new IllegalArgumentException("No admin for organization with type : " + type);
+            public UserRole getOrganizationAdminRole (){
+                throw new IllegalArgumentException("No admin for organization with this type");
             }
     };
 
-    public abstract UserRole getOrganizationAdminRole(OrganizationType type) throws IllegalArgumentException;
+    public abstract UserRole getOrganizationAdminRole() throws IllegalArgumentException;
 }

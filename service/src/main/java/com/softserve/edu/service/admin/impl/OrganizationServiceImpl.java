@@ -70,7 +70,7 @@ public class OrganizationServiceImpl implements OrganizationService {
 
         for (String type : types) {
             OrganizationType organizationType = OrganizationType.valueOf(type);
-            employeeAdmin.addRole(OrganizationType.getOrganizationAdminRole(organizationType));
+            employeeAdmin.addRole(organizationType.getOrganizationAdminRole());
             organization.addOrganizationType(organizationType);
             organization.addUser(employeeAdmin);
         }
