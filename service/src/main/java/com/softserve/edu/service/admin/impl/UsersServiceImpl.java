@@ -163,6 +163,8 @@ public class UsersServiceImpl implements UsersService {
      *
      * @param username
      */
+    @Override
+    @Transactional
     public void deleteSysAdmin(String username) {
         userRepository.delete(username);
     }
