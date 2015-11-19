@@ -43,7 +43,7 @@ public final class AgreementSpecificationBuilder extends SpecificationBuilder<Ag
         List<SearchCriterion> searchCriteria = new ArrayList<>();
         searchCriteria.add(new SearchCriterion<>(NUMBER, "number", SearchCriterion.Operator.LIKE, SearchCriterion.ValueType.STRING));
         searchCriteria.add(new SearchCriterion<>(CUSTOMER_NAME, "customer", SearchCriterion.Operator.LIKE, SearchCriterion.ValueType.STRING, "name"));
-        searchCriteria.add(new SearchCriterion<>(EXECUTOR_NAME, "customer", SearchCriterion.Operator.LIKE, SearchCriterion.ValueType.STRING, "name"));
+        searchCriteria.add(new SearchCriterion<>(EXECUTOR_NAME, "executor", SearchCriterion.Operator.LIKE, SearchCriterion.ValueType.STRING, "name"));
         searchCriteria.add(new SearchCriterion<>(DEVICE_COUNT, "deviceCount", SearchCriterion.Operator.EQUAL, SearchCriterion.ValueType.INTEGER));
         searchCriteria.add(new SearchCriterion<>(IS_AVAILABLE, "isAvailable", SearchCriterion.Operator.EQUAL, SearchCriterion.ValueType.BOOLEAN));
         searchCriteria.add(new SearchCriterion<>(START_DATE_TO_SEARCH, "date", SearchCriterion.Operator.BETWEEN_DATE, END_DATE_TO_SEARCH ));
@@ -51,6 +51,12 @@ public final class AgreementSpecificationBuilder extends SpecificationBuilder<Ag
         return searchCriteria;
     }
 
+    /**
+     * Create Sort object for Specification executor by criteria and order
+     * @param sortCriteria sorting criterion
+     * @param sortOrder sorting order
+     * @return Sort object
+     */
     @Override
     public Sort getSort(String sortCriteria, String sortOrder) {
         if (checkValue(sortCriteria) && checkValue(sortOrder)) {
@@ -60,6 +66,14 @@ public final class AgreementSpecificationBuilder extends SpecificationBuilder<Ag
         }
     }
 
+    /**
+     * Creates a new PageRequest with sort parameters applied.
+     * @param pageNumber zero-based page index.
+     * @param itemsPerPage the size of the page to be returned.
+     * @param sortCriteria sorting criterion
+     * @param sortOrder sorting order
+     * @return
+     */
     @Override
     public Pageable constructPageSpecification(int pageNumber, int itemsPerPage, String sortCriteria, String sortOrder) {
         return new PageRequest(pageNumber, itemsPerPage, getSort(sortCriteria, sortOrder));

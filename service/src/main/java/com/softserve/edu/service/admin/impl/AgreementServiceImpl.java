@@ -18,6 +18,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
+/**
+ * Service for agreements between organizations
+ */
 @Service
 public class AgreementServiceImpl implements AgreementService {
 
@@ -87,10 +90,20 @@ public class AgreementServiceImpl implements AgreementService {
         agreementRepository.save(agreement);
     }
 
+    /**
+     * Return list of agreements on specific page sorted and filtered by specific field
+     * @param pageNumber zero-based page index.
+     * @param itemsPerPage the size of the page to be returned.
+     * @param sortCriteria sorting criterion
+     * @param sortOrder sorting order
+     * @param searchKeys map of values to search
+     * @return list of agreements
+     */
     @Override
     @Transactional
     public ListToPageTransformer<Agreement> getCategoryDevicesBySearchAndPagination(int pageNumber, int itemsPerPage,
-                                                                                    Map<String, String> searchKeys, String sortCriteria, String sortOrder) {
+                                                                                    Map<String, String> searchKeys,
+                                                                                    String sortCriteria, String sortOrder) {
 
         AgreementSpecificationBuilder specificationBuilder = new AgreementSpecificationBuilder(searchKeys);
         Pageable pageSpec = specificationBuilder.constructPageSpecification(pageNumber - 1, itemsPerPage, sortCriteria, sortOrder);
@@ -105,6 +118,10 @@ public class AgreementServiceImpl implements AgreementService {
         return result;
     }
 
+    /**
+     * Disable specific agreement
+     * @param agreementId id of agreement to disable
+     */
     @Override
     @Transactional
     public void disableAgreement(Long agreementId) {

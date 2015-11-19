@@ -41,6 +41,12 @@ public class LocalityServiceImpl implements LocalityService {
         return localityRepository.findByDistrictIdAndOrganizationId(districtId, organizationId);
     }
 
+    /**
+     * Finds all localities by organization id
+     *
+     * @param organizationId id of organizaton
+     * @return list of localities
+     */
     @Override
     @Transactional(readOnly = true)
     public List<Locality> findLocalitiesByOrganizationId(Long organizationId) {

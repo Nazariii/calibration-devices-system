@@ -12,7 +12,12 @@ import javax.persistence.criteria.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-
+/**
+ * @deprecated this class have a lot of repeated code <br/>
+ * {need to be replaced and removed}<br/>
+ * use {@link com.softserve.edu.specification.SpecificationBuilder} instead
+ */
+@Deprecated
 public class CalibrationTestQueryConstructorCalibrator {
     static Logger logger = Logger.getLogger(CalibrationTestQueryConstructorCalibrator.class);
 

@@ -6,6 +6,12 @@ import org.apache.log4j.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.*;
 
+/**
+ * @deprecated this class have a lot of repeated code <br/>
+ * {need to be replaced and removed}<br/>
+ * use {@link com.softserve.edu.specification.SpecificationBuilder} instead
+ */
+@Deprecated
 public class ArchivalDevicesCategoryQueryConstructorAdmin {
     static Logger logger = Logger.getLogger(ArchivalDevicesCategoryQueryConstructorAdmin.class);
 

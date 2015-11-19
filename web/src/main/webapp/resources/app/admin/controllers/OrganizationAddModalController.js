@@ -56,7 +56,7 @@ angular
             ];
 
             /**
-             * Localization of multiselect for type of organization
+             * Localization of multiselect for type of organization and device types
              */
             $scope.setTypeDataLanguage = function () {
                 var lang = $translate.use();
@@ -84,7 +84,7 @@ angular
             });
 
             /**
-             * Resets organization form
+             * Reset organization form
              */
             $scope.resetOrganizationForm = function () {
                 $scope.$broadcast('show-errors-reset');
@@ -136,9 +136,8 @@ angular
 
 
             /**
-             * Checks whereas given username is available to use
-             * for new user
-             *
+             * Checks validation of service area
+             * if wasn't chose any service area set form not valid
              */
             $scope.isValidAcordion = true;
             function checkValidAcardion() {
@@ -162,6 +161,7 @@ angular
             $scope.localities = undefined;
             $scope.streets = "";
             $scope.buildings = null;
+
 
             /**
              * Receives all possible districts.
@@ -361,7 +361,6 @@ angular
              * form and updates table with organizations.
              */
             function saveOrganization() {
-                console.log($scope.organizationFormData);
                 organizationService.saveOrganization($scope.organizationFormData)
                     .then(function (data) {
                         if (data == 201) {

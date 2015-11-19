@@ -3,10 +3,9 @@ package com.softserve.edu.specification.sort;
 import com.softserve.edu.specification.AgreementSpecificationBuilder;
 import org.springframework.data.domain.Sort;
 
-public enum AgreementSortCriteria {
-    ID() {
+public enum AgreementSortCriteria implements SortCriteria{
+    ID {
         public Sort getSort(String sortOrder) {
-
             if(sortOrder.equalsIgnoreCase("asc")) {
                 return new Sort(Sort.Direction.ASC, AgreementSpecificationBuilder.ID);
             } else {
@@ -14,7 +13,7 @@ public enum AgreementSortCriteria {
             }
         }
     },
-    UNDEFINED() {
+    UNDEFINED {
         public Sort getSort(String sortOrder) {
             if(sortOrder.equalsIgnoreCase("asc")) {
                 return new Sort(Sort.Direction.ASC, AgreementSpecificationBuilder.NUMBER);
@@ -23,7 +22,7 @@ public enum AgreementSortCriteria {
             }
         }
     },
-    NUMBER() {
+    NUMBER {
         public Sort getSort(String sortOrder) {
             if(sortOrder.equalsIgnoreCase("asc")) {
                 return new Sort(Sort.Direction.ASC, AgreementSpecificationBuilder.NUMBER);
@@ -32,7 +31,7 @@ public enum AgreementSortCriteria {
             }
         }
     },
-    DEVICE_TYPE() {
+    DEVICE_TYPE {
         public Sort getSort(String sortOrder) {
             if(sortOrder.equalsIgnoreCase("asc")) {
                 return new Sort(Sort.Direction.ASC, AgreementSpecificationBuilder.DEVICE_TYPE);
@@ -41,7 +40,7 @@ public enum AgreementSortCriteria {
             }
         }
     },
-    DEVICE_COUNT() {
+    DEVICE_COUNT {
         public Sort getSort(String sortOrder) {
             if(sortOrder.equalsIgnoreCase("asc")) {
                 return new Sort(Sort.Direction.ASC, AgreementSpecificationBuilder.DEVICE_COUNT);
@@ -50,7 +49,7 @@ public enum AgreementSortCriteria {
             }
         }
     },
-    CUSTOMER_NAME() {
+    CUSTOMER_NAME {
         public Sort getSort(String sortOrder) {
             if(sortOrder.equalsIgnoreCase("asc")) {
                 return new Sort(Sort.Direction.ASC, AgreementSpecificationBuilder.CUSTOMER_JOIN_NAME);
@@ -59,7 +58,7 @@ public enum AgreementSortCriteria {
             }
         }
     },
-    EXECUTOR_NAME() {
+    EXECUTOR_NAME {
         public Sort getSort(String sortOrder) {
             if(sortOrder.equalsIgnoreCase("asc")) {
                 return new Sort(Sort.Direction.ASC, AgreementSpecificationBuilder.EXECUTOR_JOIN_NAME);
@@ -68,7 +67,7 @@ public enum AgreementSortCriteria {
             }
         }
     },
-    DATE() {
+    DATE {
         public Sort getSort(String sortOrder) {
             if(sortOrder.equalsIgnoreCase("asc")) {
                 return new Sort(Sort.Direction.ASC, AgreementSpecificationBuilder.DATE);
@@ -76,9 +75,5 @@ public enum AgreementSortCriteria {
                 return new Sort(Sort.Direction.DESC, AgreementSpecificationBuilder.DATE);
             }
         }
-    };
-
-    public Sort getSort(String sortOrder) {
-        return null;
     }
 }

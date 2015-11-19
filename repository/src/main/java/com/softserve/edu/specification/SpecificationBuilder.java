@@ -25,6 +25,10 @@ public abstract class SpecificationBuilder<T> {
     private List<SearchCriterion> criteria;
     private Map<String, String> searchValues;
 
+    /**
+     * Used template pattern to initialise search criteria list
+     * @param searchValues map of values to search
+     */
     public SpecificationBuilder(Map<String, String> searchValues) {
         this.criteria = initCriteria();
         if (criteria == null && searchValues == null) {
@@ -33,6 +37,16 @@ public abstract class SpecificationBuilder<T> {
         this.searchValues = searchValues;
     }
 
+    /**
+     * Initializing search criteria
+     * @return list of sorting criteria
+     */
+    protected abstract List<SearchCriterion> initCriteria();
+
+    /**
+     * Builds specification predicate from search criteria on map of search values
+     * @return specification predicate
+     */
     public Specification<T> buildPredicate() {
         return (root, query, cb) -> {
             final List<Predicate> predicates = new ArrayList<>();
@@ -125,11 +139,6 @@ public abstract class SpecificationBuilder<T> {
         return (value != null) && (!value.isEmpty());
     }
 
-    /**
-     * Initializing search criteria
-     * @return list of sorting criteria
-     */
-    protected abstract List<SearchCriterion> initCriteria();
 
     /**
      * Create Sort object for Specification executor by criteria and order

@@ -7,9 +7,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-
 /**
- * @author Nazarii Ivashkiv
+ * Class for converting types
  */
 public class TypeConverter {
 
@@ -39,6 +38,11 @@ public class TypeConverter {
         return res;
     }
 
+    /**
+     * Convert object to map of its fields and values
+     * @param object for converting
+     * @return map of fields and values
+     */
     public static Map<String, String> ObjectToMap(Object object) {
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -48,16 +52,5 @@ public class TypeConverter {
                 .filter(entry -> entry.getValue() != null)
                 .collect(Collectors.toMap(Map.Entry::getKey, newEntry -> String.valueOf(newEntry.getValue())));
     }
-
-    /*public static <T> Map<String, Object> ObjectToMap(Object object) throws IntrospectionException, InvocationTargetException, IllegalAccessException {
-        Map<String, Object> objectAsMap = new HashMap<>();
-        BeanInfo info = Introspector.getBeanInfo(object.getClass());
-        for (PropertyDescriptor pd : info.getPropertyDescriptors()) {
-            Method reader = pd.getReadMethod();
-            if (reader != null)
-                objectAsMap.put(pd.getName(), reader.invoke(object));
-        }
-        return objectAsMap;
-    }*/
 
 }

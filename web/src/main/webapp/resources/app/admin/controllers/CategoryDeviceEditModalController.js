@@ -38,7 +38,7 @@ angular
             ];
 
             /**
-             * Localization of multiselect for type of organization
+             * Localization of select for counters kind
              */
             $scope.setTypeDataLanguage = function () {
                 var lang = $translate.use();
@@ -54,9 +54,6 @@ angular
                     $scope.deviceTypeData[1].label = 'Hot water';
                 }
             };
-
-            /*
-            */
 
             var setCurrentTypeDataLanguage = function () {
                 var lang = $translate.use();
@@ -90,7 +87,6 @@ angular
             $scope.setTypeDataLanguage();
             setTimeout(setCurrentTypeDataLanguage(), 2000);
 
-
             /**
              * Closes modal window on browser's back/forward button click.
              */
@@ -100,7 +96,7 @@ angular
 
             /**
              * Closes the modal window for adding new
-             * organization.
+             * category.
              */
             $rootScope.closeModal = function (close) {
                 if(close === true) {
@@ -110,7 +106,7 @@ angular
             };
 
             /**
-             * Validates organization form before saving
+             * Validates category form before saving
              */
             $scope.onEditCategoryFormSubmit = function () {
                 $scope.$broadcast('show-errors-check-validity');
@@ -119,26 +115,22 @@ angular
                         deviceType: $scope.defaultData.deviceType.type,
                         deviceName: $rootScope.countersCategory.deviceName
                     };
-                    console.log(deviceCategoryForm);
                     saveDeviceCategory(deviceCategoryForm);
                 }
             };
 
             /**
-             * Saves new organization from the form in database.
-             * If everything is ok then resets the organization
-             * form and updates table with organizations.
+             * Saves new category from the form in database.
+             * If everything is ok then resets the category
+             * form and updates table with devices categories.
              */
             function saveDeviceCategory(deviceCategoryForm) {
-                console.log(deviceCategoryForm);
-                console.log($rootScope.countersCategory.id);
                 devicesService.editDeviceCategory(
                     deviceCategoryForm,
                     $rootScope.countersCategory.id).then(
                     function (data) {
                         if (data == 200) {
                             $scope.closeModal(true);
-                            console.log(data);
                             $rootScope.onTableHandling();
                         }
                     });

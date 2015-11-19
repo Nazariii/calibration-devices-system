@@ -22,7 +22,12 @@ import com.softserve.edu.entity.user.User;
 import com.softserve.edu.entity.enumeration.user.UserRole;
 import com.softserve.edu.entity.enumeration.verification.Status;
 
-
+/**
+ * @deprecated this class have a lot of repeated code <br/>
+ * {need to be replaced and removed}<br/>
+ * use {@link com.softserve.edu.specification.SpecificationBuilder} instead
+ */
+@Deprecated
 public class NewVerificationsQueryConstructorVerificator {
 
     static Logger logger = Logger.getLogger(NewVerificationsQueryConstructorVerificator.class);

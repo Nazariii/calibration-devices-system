@@ -8,5 +8,10 @@ public interface RegionService {
 
     Region getRegionByDesignation(String designation);
 
+    /**
+     * Find region by district id
+     * @param districtId id of district
+     * @return region
+     */
     Region findByDistrictId(Long districtId);
 }

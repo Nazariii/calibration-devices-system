@@ -15,7 +15,7 @@ angular
 
             $scope.names = devices.data;
             /**
-             * init all Standard Size of counter type for selector
+             * init all Standard Size of counters type for selector
              */
             $scope.standardSizes = ['DN 10','DN 15','DN 20','DN 25','DN 32',
                 'DN 40','DN 50','DN 65','DN 80','DN 100',
@@ -54,7 +54,7 @@ angular
 
             /**
              * Closes the modal window for adding new
-             * organization.
+             * counters type
              */
             $rootScope.closeModal = function (close) {
                 if(close === true) {
@@ -65,14 +65,14 @@ angular
 
             /**
              * Save non visible field device category id
-             * when we choose name of category type
+             * when we choose name of category
              */
             $scope.setDeviceId = function (selectedDevice) {
                 $scope.deviceId = selectedDevice.id;
             };
 
             /**
-             * Check valedation of form before saving and
+             * Check validation of form before saving and
              * init saving form
              */
             $scope.onEditCounterTypeFormSubmit = function () {

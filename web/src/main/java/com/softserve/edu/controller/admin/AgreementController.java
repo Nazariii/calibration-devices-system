@@ -138,7 +138,12 @@ public class AgreementController {
         return new PageDTO<>(queryResult.getTotalItems(), content);
     }
 
-
+    /**
+     * Return page of agreements
+     * @param pageNumber   number of page to return
+     * @param itemsPerPage count of items on page
+     * @return page of agreement
+     */
     @RequestMapping(value = "{pageNumber}/{itemsPerPage}", method = RequestMethod.GET)
     public PageDTO<AgreementDTO> getDeviceCategoryPage(@PathVariable Integer pageNumber, @PathVariable Integer itemsPerPage) {
         return pageDeviceCategoryWithSearch(pageNumber, itemsPerPage, null, null, null);

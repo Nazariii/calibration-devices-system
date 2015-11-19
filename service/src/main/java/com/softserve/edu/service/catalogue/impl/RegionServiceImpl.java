@@ -25,6 +25,11 @@ public class RegionServiceImpl implements RegionService{
         return regionRepository.findByDesignation(designation);
     }
 
+    /**
+     * Find region by district id
+     * @param districtId id of district
+     * @return region
+     */
     @Override
     public Region findByDistrictId(Long districtId) {
         return regionRepository.findByDistrictId(districtId);

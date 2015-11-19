@@ -102,11 +102,11 @@ public class OrganizationController {
      * Fetch required data for all organization depends on  received {@param pageNumber}, {@param itemsPerPage},
      * {@param sortCriteria} {@param sortOrder} and {@param searchData} that contains fields must be filtered
      *
-     * @param pageNumber
-     * @param itemsPerPage
-     * @param sortCriteria
-     * @param sortOrder
-     * @param searchData
+     * @param pageNumber   number of page to return
+     * @param itemsPerPage count of items on page
+     * @param sortCriteria sorting criteria
+     * @param sortOrder    order of sorting
+     * @param searchData   filtering data
      * @return PageDTO that contains required data about current organizations depends on received filter, sort ,pagination and items per page
      */
     @RequestMapping(value = "{pageNumber}/{itemsPerPage}/{sortCriteria}/{sortOrder}", method = RequestMethod.GET)
@@ -151,7 +151,7 @@ public class OrganizationController {
     /**
      * Fetch data depends on organization with received {@param id}
      *
-     * @param id
+     * @param id id of organizaton
      * @return OrganizationDTO
      */
     @RequestMapping(value = "getOrganization/{id}")
@@ -170,10 +170,9 @@ public class OrganizationController {
                 .map(Device.DeviceType::name)
                 .forEach(counters::add);
 
-        OrganizationDTO organizationDTO = new OrganizationDTO(organization.getId(), organization.getName(), organization.getEmail(), organization.getPhone(), types, counters,
+        return new OrganizationDTO(organization.getId(), organization.getName(), organization.getEmail(), organization.getPhone(), types, counters,
                 organization.getEmployeesCapacity(), organization.getMaxProcessTime(), organization.getAddress().getRegion(), organization.getAddress().getDistrict(), organization.getAddress().getLocality(),
                 organization.getAddress().getStreet(), organization.getAddress().getBuilding(), organization.getAddress().getFlat());
-        return organizationDTO;
     }
 
     /**
@@ -218,7 +217,7 @@ public class OrganizationController {
                     organization.getMiddleName(),
                     adminName,
                     organization.getServiceAreas());
-        } catch ( UnsupportedEncodingException | MessagingException  e) {
+        } catch (UnsupportedEncodingException | MessagingException e) {
             logger.error("Got exeption while editing organization ", e);
             httpStatus = HttpStatus.CONFLICT;
         }
@@ -236,7 +235,7 @@ public class OrganizationController {
     /**
      * Fetch organization admin data depends on organization with id {@param id}
      *
-     * @param id
+     * @param id id of organizaton
      * @return OrganizationAdminDTO
      */
     @RequestMapping(value = "getOrganizationAdmin/{id}")
@@ -270,7 +269,7 @@ public class OrganizationController {
     /**
      * Fetch organization edit history for organization with  {@param organizationId}
      *
-     * @param organizationId
+     * @param organizationId id of organizaton
      * @return PageDTO<OrganizationEditHistoryPageDTO>
      */
     @RequestMapping(value = "edit/history/{organizationId}")
@@ -280,6 +279,12 @@ public class OrganizationController {
         return new PageDTO<>(OrganizationEditPageDTOTransformer.toDtoFromList(organizationEditHistoryList));
     }
 
+    /**
+     * Finds all localities by organization id
+     *
+     * @param organizationId id of organizaton
+     * @return list of localities
+     */
     @RequestMapping(value = "serviceArea/localities/{organizationId}", method = RequestMethod.GET)
     public List<LocalityDTO> getServiceAreaLocaities(@PathVariable("organizationId") Long organizationId) {
         return localityService.findLocalitiesByOrganizationId(organizationId).stream()
@@ -287,11 +292,24 @@ public class OrganizationController {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Find region by district id
+     *
+     * @param districtId id of district
+     * @return region
+     */
     @RequestMapping(value = "serviceArea/region/{districtId}", method = RequestMethod.GET)
     public Region getServiceAreaRegion(@PathVariable("districtId") Long districtId) {
         return regionService.findByDistrictId(districtId);
     }
 
+    /**
+     * Find all organizations by organization types and device types
+     *
+     * @param organizationType type of organization
+     * @param deviceType       type of device
+     * @return list of organization wraped in ApplicationFieldDTO
+     */
     @RequestMapping(value = "getOrganization/{organizationType}/{deviceType}", method = RequestMethod.GET)
     public List<ApplicationFieldDTO> getOrganizationByOrganizationTypeAndDeviceType(@PathVariable("organizationType") String organizationType,
                                                                                     @PathVariable("deviceType") String deviceType) {

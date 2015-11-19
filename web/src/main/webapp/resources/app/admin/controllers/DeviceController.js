@@ -19,7 +19,7 @@ angular
             $scope.itemsPerPage = 5;
             $scope.pageContent = [];
 
-            //for measurement device type
+            //for devices kinds
             $scope.selectedDeviceType = {
                 name: null
             }
@@ -44,7 +44,7 @@ angular
             ];
 
             /**
-             * Localization of multiselect for type of organization
+             * Localization of multiselect for type of devices category
              */
             $scope.setTypeDataLanguage = function () {
                 $scope.deviceTypeData[0].label = $filter('translate')('WATER');
@@ -155,6 +155,10 @@ angular
 
             };
 
+            /**
+             * Remove devices category by id
+             * @param id
+             */
             $scope.deleteDeviceCategory = function (id) {
                 $rootScope.deviceCategoryId = id;
                 console.log($rootScope.deviceCategoryId);

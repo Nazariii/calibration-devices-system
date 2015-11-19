@@ -59,8 +59,8 @@ angular
             };
 
             /**
-             * Check valedation of form before saving and
-             * init non-visible fileds
+             * Check validation of form before saving and
+             * init non-visible fields
              */
             $scope.onAddCounterTypeFormSubmit = function () {
                 $scope.$broadcast('show-errors-check-validity');

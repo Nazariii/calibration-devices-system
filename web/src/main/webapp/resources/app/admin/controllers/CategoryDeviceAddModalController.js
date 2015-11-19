@@ -35,7 +35,7 @@ angular
             ];
 
             /**
-             * Localization of multiselect for type of organization
+             * Localization of select for counters kind
              */
             $scope.setTypeDataLanguage = function () {
                 var lang = $translate.use();
@@ -61,7 +61,7 @@ angular
             });
 
             /**
-             * Resets organization form
+             * Resets category form
              */
             $scope.resetAddCategoryForm = function () {
                 $scope.$broadcast('show-errors-reset');
@@ -72,7 +72,7 @@ angular
 
             /**
              * Closes the modal window for adding new
-             * organization.
+             * category.
              */
             $rootScope.closeModal = function (close) {
                 $scope.resetAddCategoryForm();
@@ -83,7 +83,7 @@ angular
             };
 
             /**
-             * Validates organization form before saving
+             * Validates category form before saving
              */
             $scope.onAddCategoryFormSubmit = function () {
                 $scope.$broadcast('show-errors-check-validity');
@@ -94,9 +94,9 @@ angular
             };
 
             /**
-             * Saves new organization from the form in database.
-             * If everything is ok then resets the organization
-             * form and updates table with organizations.
+             * Saves new category from the form in database.
+             * If everything is ok then resets the category
+             * form and updates table with devices categories.
              */
             function saveDeviceCategory() {
                 console.log($scope.addCategoryFormData);

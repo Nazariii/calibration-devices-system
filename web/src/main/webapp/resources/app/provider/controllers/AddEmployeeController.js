@@ -1,9 +1,10 @@
 angular
     .module('employeeModule')
     .controller('AddEmployeeController', ['$rootScope', '$scope', '$modalInstance','$modal',
-        '$timeout', '$log', '$state', '$http', 'UserService', 'AddressServiceProvider',
+        '$timeout', '$log', '$state', '$http', 'UserService', 'AddressServiceProvider', 'toaster', '$filter',
 
-        function ($rootScope, $scope, $modalInstance,$modal, $timeout, $log, $state, $http, userService, addressServiceProvider) {
+        function ($rootScope, $scope, $modalInstance,$modal, $timeout, $log, $state, $http,
+                  userService, addressServiceProvider, toaster, $filter) {
             var organizationTypeProvider = false;
             var organizationTypeCalibrator = false;
             var organizationTypeVerificator = false;
@@ -371,22 +372,14 @@ angular
                             $rootScope.$broadcast('new-employee-added');
                             $scope.closeModal();
                             $scope.resetEmployeeForm();
-                            $modal.open({
-                                animation: true,
-                                templateUrl: '/resources/app/provider/views/modals/success-adding.html',
-                                controller: function ($modalInstance) {
-                                    this.ok = function () {
-                                        $modalInstance.close();
-                                    }
-                                },
-                                controllerAs: 'successController',
-                                size: 'md'
-                            });
+                            toaster.pop('success', $filter('translate')('INFORMATION'),
+                                $filter('translate')('SUCCESSFUL_ADD_EMPLOYEE'));
                         } else {
-                            alert('Error');
+                            toaster.pop('error', $filter('translate')('INFORMATION'),
+                                $filter('translate')('ERROR_ADD_EMPLOYEE'));
                         }
                     });
-            };
+            }
 
             /**
              * Receives all regex for input fields

@@ -9,8 +9,14 @@ import com.softserve.edu.entity.catalogue.Region;
 
 @Repository
 public interface RegionRepository extends CrudRepository<Region, Long> {
+
     Region findByDesignation(String designation);
 
+    /**
+     * Find region by district id
+     * @param districtId id of district
+     * @return region
+     */
     @Query("SELECT region FROM District district INNER JOIN district.region region WHERE district.id=:districtId")
     Region findByDistrictId(@Param("districtId") Long districtId);
 }

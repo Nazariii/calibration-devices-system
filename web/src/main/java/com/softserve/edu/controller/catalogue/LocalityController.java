@@ -3,7 +3,6 @@ package com.softserve.edu.controller.catalogue;
 import com.softserve.edu.controller.client.application.util.CatalogueDTOTransformer;
 import com.softserve.edu.dto.application.ApplicationFieldDTO;
 import com.softserve.edu.service.catalogue.LocalityService;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +13,6 @@ import java.util.List;
 
 @RestController
 public class LocalityController {
-    Logger logger = Logger.getLogger(LocalityController.class);
 
     @Autowired
     private LocalityService localityService;

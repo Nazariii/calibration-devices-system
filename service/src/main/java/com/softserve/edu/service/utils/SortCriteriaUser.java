@@ -6,7 +6,12 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Root;
 
-
+/**
+ * @deprecated this class have a lot of repeated code <br/>
+ * {need to be replaced and removed}<br/>
+ * use {@link com.softserve.edu.specification.sort.SortCriteria} interface instead<br/>
+ * as it used in {@link com.softserve.edu.specification.sort.AgreementSortCriteria}
+ */
 public enum SortCriteriaUser {
     USERNAME() {
         public Order getSortOrder(Root<User> root, CriteriaBuilder cb, String sortOrder) {

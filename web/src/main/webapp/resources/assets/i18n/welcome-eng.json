@@ -105,6 +105,11 @@
   "SUCCESSFUL_EDITED_ADMIN" :"Admin have been edited",
   "SUCCESSFUL_DELETED_ADMIN" :"Admin have been deleted",
 
+  "SUCCESSFUL_ADD_EMPLOYEE":"New employee was successfully added",
+  "SUCCESSFUL_EDIT_EMPLOYEE":"Employee was successfully edited",
+  "ERROR_ADD_EMPLOYEE":"Error, you didn't add new employee!",
+  "ERROR_EDIT_EMPLOYEE":"Error, you didn't edit employee!",
+
   "ACCOUNT_INFORMATION":"Account information",
   "GENERAL_INFORMATION":"General information",
   "LOGIN_TWO":"Login",

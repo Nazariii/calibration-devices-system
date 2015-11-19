@@ -11,20 +11,19 @@ import lombok.Setter;
 public class SearchCriterion<T extends Enum<T>> {
     private String key;
     private String entityField;
-    private String additionKey;
     private Operator operation;
+    private String additionKey;
     private ValueType valueType;
     private String joinEntityField;
     private Class<T> enumKeyType;
 
     /**
-     *
-     * @param key key to filter
-     * @param entityField name of corresponding entity field
-     * @param operation type of operation
-     * @param enumKeyType type of Enum, if entity field is Enum
-     * @param additionKey addition key to filter (e.g: for between operation)
-     * @param valueType type of key value
+     * @param key             key to filter
+     * @param entityField     name of corresponding entity field
+     * @param operation       type of operation
+     * @param enumKeyType     type of Enum, if entity field is Enum
+     * @param additionKey     addition key to filter (e.g: for between operation)
+     * @param valueType       type of key value
      * @param joinEntityField name of entity field that need to be accessed by join if need to make join on entityField
      */
     public SearchCriterion(String key, String entityField, Operator operation, Class<T> enumKeyType, String additionKey, ValueType valueType, String joinEntityField) {
@@ -38,10 +37,9 @@ public class SearchCriterion<T extends Enum<T>> {
     }
 
     /**
-     *
-     * @param key key to filter
+     * @param key         key to filter
      * @param entityField name of corresponding entity field
-     * @param operation type of operation
+     * @param operation   type of operation
      * @param enumKeyType type of Enum, if entity field is Enum
      */
     public SearchCriterion(String key, String entityField, Operator operation, Class<T> enumKeyType) {
@@ -49,22 +47,20 @@ public class SearchCriterion<T extends Enum<T>> {
     }
 
     /**
-     *
-     * @param key key to filter
+     * @param key         key to filter
      * @param entityField name of corresponding entity field
-     * @param operation type of operation
-     * @param valueType type of key value
+     * @param operation   type of operation
+     * @param valueType   type of key value
      */
     public SearchCriterion(String key, String entityField, Operator operation, ValueType valueType) {
         this(key, entityField, operation, null, null, valueType, null);
     }
 
     /**
-     *
-     * @param key key to filter
-     * @param entityField name of corresponding entity field
-     * @param operation type of operation
-     * @param valueType type of key value
+     * @param key             key to filter
+     * @param entityField     name of corresponding entity field
+     * @param operation       type of operation
+     * @param valueType       type of key value
      * @param joinEntityField name of entity field that need to be accessed by join if need to make join on entityField
      */
     public SearchCriterion(String key, String entityField, Operator operation, ValueType valueType, String joinEntityField) {
@@ -72,10 +68,9 @@ public class SearchCriterion<T extends Enum<T>> {
     }
 
     /**
-     *
-     * @param key key to filter
+     * @param key         key to filter
      * @param entityField name of corresponding entity field
-     * @param operation type of operation
+     * @param operation   type of operation
      * @param additionKey addition key to filter (e.g: for between operation)
      */
     public SearchCriterion(String key, String entityField, Operator operation, String additionKey) {
@@ -84,6 +79,7 @@ public class SearchCriterion<T extends Enum<T>> {
 
     /**
      * Get Enum from value by enumKeyType class
+     *
      * @param key value that converts to corresponding enum
      * @return Enum of enumKeyType class
      */
@@ -95,7 +91,7 @@ public class SearchCriterion<T extends Enum<T>> {
      *
      */
     public enum Operator {
-        EQUAL, EQUAL_BY_ENUM, BETWEEN_DATE,  LIKE
+        EQUAL, EQUAL_BY_ENUM, BETWEEN_DATE, LIKE
     }
 
     public enum ValueType {

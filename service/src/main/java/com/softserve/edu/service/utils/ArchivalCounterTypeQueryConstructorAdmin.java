@@ -9,6 +9,12 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+/**
+ * @deprecated this class have a lot of repeated code <br/>
+ * {need to be replaced and removed}<br/>
+ * use {@link com.softserve.edu.specification.SpecificationBuilder} instead
+ */
+@Deprecated
 public class ArchivalCounterTypeQueryConstructorAdmin {
     static Logger logger = Logger.getLogger(ArchivalCounterTypeQueryConstructorAdmin.class);
 

@@ -8,10 +8,12 @@ import org.apache.log4j.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.*;
 
-
 /**
- * Created by MAX on 11.07.2015.
+ * @deprecated this class have a lot of repeated code <br/>
+ * {need to be replaced and removed}<br/>
+ * use {@link com.softserve.edu.specification.SpecificationBuilder} instead
  */
+@Deprecated
 public class ProviderEmployeeQuery {
 
     static Logger logger = Logger.getLogger(ArchivalVerificationsQueryConstructorProvider.class);
