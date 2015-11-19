@@ -3,25 +3,26 @@ package com.softserve.edu.entity.enumeration.organization;
 import com.softserve.edu.entity.enumeration.user.UserRole;
 
 public enum OrganizationType {
-    PROVIDER,
-    CALIBRATOR,
-    STATE_VERIFICATOR,
-    NO_TYPE;
-
-    public static UserRole getOrganizationAdminRole(OrganizationType type) {
-        UserRole userRole;
-        switch (type) {
-            case PROVIDER:
-                userRole = UserRole.PROVIDER_ADMIN;
-                break;
-            case CALIBRATOR:
-            userRole = UserRole.CALIBRATOR_ADMIN;
-                break;
-            case STATE_VERIFICATOR:
-                userRole = UserRole.STATE_VERIFICATOR_ADMIN;
-                break;
-            default: throw new IllegalArgumentException("No admin for organization with type : " + type);
+    PROVIDER(){
+        public UserRole getOrganizationAdminRole(OrganizationType type){
+            return UserRole.PROVIDER_ADMIN;
         }
-        return userRole;
-    }
+    },
+    CALIBRATOR() {
+        public UserRole getOrganizationAdminRole(OrganizationType type) {
+            return UserRole.CALIBRATOR_ADMIN;
+        }
+    },
+    STATE_VERIFICATOR() {
+        public UserRole getOrganizationAdminRole(OrganizationType type) {
+            return UserRole.STATE_VERIFICATOR_ADMIN;
+        }
+    },
+    NO_TYPE() {
+            public UserRole getOrganizationAdminRole (OrganizationType type){
+                throw new IllegalArgumentException("No admin for organization with type : " + type);
+            }
+    };
+
+    public abstract UserRole getOrganizationAdminRole(OrganizationType type) throws IllegalArgumentException;
 }
